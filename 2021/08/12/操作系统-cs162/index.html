@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      36 字
+      409 字
     </span>
   
 
@@ -228,7 +228,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：8 分钟前
+                  本文最后更新于：几秒前
                 
               </p>
             
@@ -242,6 +242,100 @@
 </ul>
 </li>
 </ul>
+<h3><span id="1illusionist">1.illusionist</span></h3><ul>
+<li>Provide clean, easy to use abstractions of physical resources<ul>
+<li>Infinite memory, dedicated machine</li>
+<li>Higher level objects: files, users, messages</li>
+<li>Masking limitations, virtualization</li>
+</ul>
+</li>
+</ul>
+<h3><span id="2-referee">2.  Referee</span></h3><ul>
+<li>Manage sharing of resources, Protection, Isolation<ul>
+<li><pre><code>Resource allocation, isolation, communication
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3><span id="3glue">3.Glue</span></h3><ul>
+<li>Common services<ul>
+<li>Storage, Window system, Networking </li>
+<li>Sharing, Authorization</li>
+<li>Look and feel</li>
+</ul>
+</li>
+</ul>
+<h2><span id="syllabus">Syllabus</span></h2><ul>
+<li>OS Concepts: How to Navigate as a Systems Programmer!<ul>
+<li>Process, 1/O, Networks and Virtual Machines</li>
+</ul>
+</li>
+<li>Concurrency<ul>
+<li>Threads, scheduling, locks, deadlock, scalability, fairness </li>
+</ul>
+</li>
+<li>Address Space<ul>
+<li>Virtual memory, address translation, protection, sharing </li>
+</ul>
+</li>
+<li>File Systems<ul>
+<li>O devices, file objects, storage, naming, caching,<br>performance, paging, transactions, databases</li>
+</ul>
+</li>
+<li>Distributed Systems<ul>
+<li>Protocols, N-Tiers, RPC, NFS, DHTs, Consistency, Scalability, multicast</li>
+</ul>
+</li>
+<li>Reliability &amp; Security<ul>
+<li>Fault tolerance, protection, security</li>
+</ul>
+</li>
+<li>Cloud Infrastructure</li>
+</ul>
+<h1><span id="lec-2-four-fundamental-concepts">Lec 2 Four Fundamental concepts</span></h1><ul>
+<li>Thread<ul>
+<li>Single unique execution context</li>
+<li>Program Counter. Registers, Execution Flags, Stack</li>
+</ul>
+</li>
+<li>Address Space w/o Transiation<ul>
+<li>Programs execute in an address space that is distinct from the memory space of the physical machine</li>
+</ul>
+</li>
+<li>Process<ul>
+<li>An instance of an executing program is a process consisting of an address space and one or more threads of control</li>
+</ul>
+</li>
+<li>Dual Mode operation/Protection<ul>
+<li>Only the “system” has the ability to access certain resources </li>
+<li>The OS and the hardware are protected from user programs and user programs are isolated from one another by<br>controlling the translation from program virtual addresses to machine physical addresses</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/15-33-00d0751030121f8388f3a23b81723cb3.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午3.33.28"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/15-24-2c6b05679a9a05eff18de57e5c8ba443.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午3.24.40"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/15-31-9785f3e888447085f6a5772cbb232beb.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午3.31.04"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/15-41-0fe9bb54528467f6186205126945b9fb.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午3.41.43"></p>
+<h2><span id="1-thread-of-control">1. Thread of Control</span></h2><p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/15-47-3dc64997a64927099120bc688092e843.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午3.47.52"></p>
+<p>threads 在这里不是多线程，而是如下图的virtual cores， 不同时间处理不同的threads</p>
+<p>os使得每一个thread认为自己运行在一个单独的cpu上</p>
+<p>寄存器会被存在control block，每次换一个thread会重新load寄存器</p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/15-57-11b35329736cba0bbb4731b5dfd1e254.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午3.57.49"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/15-58-10a052b72ea7d0de0c556428898a5bf4.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午3.58.48"></p>
+<h2><span id="2-address-space">2. Address Space</span></h2><p> <img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/16-09-50c2db9fb63f9d4feba6c8381408100d.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午4.09.30"></p>
+<p>每个thread share 所有的address space （危险）</p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/16-11-53e00b919137f6ba6bdfdbc9ca8d474b.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午4.11.31"></p>
+<p>最简单的保护方法是：分块（用的时候需要翻译一下地址relocate），并且设置 base and bound</p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/16-22-c38d0212f91fbe6fe8b104e46232e96a.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午4.22.02"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/16-23-25b765f292b2c6a781d9c22d47fdc374.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午4.23.27"></p>
+<p>Paged Virtual Address Space</p>
+<h2><span id="3-process-进程">3.  Process 进程</span></h2><p>程序之间的一种保护机制或者说环境，保证之间的线程互相不影响</p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/16-27-a070bbaacd67f65b14bffcc9cc2ebb37.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午4.27.39"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/16-30-173f8ac6e7e812444a82b1a611e99001.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午4.30.12"></p>
+<h2><span id="4-dual-mode-operation">4. Dual Mode Operation</span></h2><p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/16-34-df5716ee4e14e7bf18e8bdd2e7bcb974.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午4.34.38"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/16-37-549362cb3373a67f460da50b3bbae658.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午4.37.33"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/16-38-e8a7f15214d79f186ab95d92192ec607.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午4.37.59"></p>
 
             </div>
             <hr>
@@ -259,7 +353,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">OS 操作系统</a>
+                      <a class="hover-with-bg" href="/tags/OS/">OS</a>
                     
                       <a class="hover-with-bg" href="/tags/Notes-%E7%AC%94%E8%AE%B0/">Notes 笔记</a>
                     
