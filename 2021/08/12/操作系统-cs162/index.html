@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.3k 字
+      3.4k 字
     </span>
   
 
@@ -228,7 +228,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：18 天前
+                  本文最后更新于：6 小时前
                 
               </p>
             
@@ -321,6 +321,7 @@
 <p>threads 在这里不是多线程，而是如下图的virtual cores， 不同时间处理不同的threads</p>
 <p>os使得每一个thread认为自己运行在一个单独的cpu上</p>
 <p>寄存器会被存在control block，每次换一个thread会重新load寄存器</p>
+<p>每个thread有自己的寄存器</p>
 <p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/15-57-11b35329736cba0bbb4731b5dfd1e254.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午3.57.49"></p>
 <p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/15-58-10a052b72ea7d0de0c556428898a5bf4.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午3.58.48"></p>
 <h2><span id="2-address-space">2. Address Space</span></h2><p> <img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/08/12/16-09-50c2db9fb63f9d4feba6c8381408100d.png" srcset="/img/loading.gif" lazyload alt="截屏2021-08-12 下午4.09.30"></p>
@@ -383,6 +384,35 @@
 <p>例子3：在Windows 3.x下，进程是最小运行单位，你每启动一个程序，就启动了一个进程；在Windows 3.x以后，线程是最小单位，每个进程可以启动多个线程(它们彼此共享所在进程中的虚拟空间，所以会出现多个线程操作一片内存的情况)，比如每下载一个文件可以单独开一个线程。</p>
 <p>7.进程与程序的区别<br>程序是一组指令的集合，它是存储在计算机系统的硬盘中的静态文件，没有执行的含义。而进程是一个动态的实体，有自己的生命周期。一般说来，一个进程肯定与一个程序相对应，并且只有一个，但是一个程序可以有多个进程，或者一个进程都没有。简单地说，进程是程序的一部分，程序运行的时候会产生进程。</p>
 <p>8.总结：线程是进程的一部分，进程是程序的一部分。<br>————————————————<br>版权声明：本文为CSDN博主「华子任」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/honglin_ren/article/details/35839979">https://blog.csdn.net/honglin_ren/article/details/35839979</a></p>
+<h1><span id="lec-3-processes-fork-io-files-2015-lec3">Lec 3 Processes, Fork, I/O, Files (2015-Lec3)</span></h1><p>硬件实现多线程而不是virtual cpu：</p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/16-09-5fe0fa6202a6c7a7b4482bbc6827e52f.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午4.09.39"></p>
+<p>用户态到核心态的切换 ：</p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/16-13-3961265d695631facc791dbb45ea631b.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午4.13.33"></p>
+<p> <img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/16-15-e0a35305013affc37598870829f3fad2.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午4.15.23"></p>
+<p>一个中断的例子：</p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/16-20-f1a44d19d1edfd01c0539fe396f04908.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午4.20.29"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/16-23-2153f8e19c01cae5b425742e52623eee.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午4.23.04"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/17-54-22132d3ad6bc8318f33496e77cdb439b.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午5.54.22"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/17-54-95b1cc32ef7f39372fc974f3718ab818.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午5.54.54"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/17-55-c4e86a15e282446044e330e88b53c1c4.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午5.55.13"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/17-58-feb73542891f291629c869e01acac4df.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午5.58.09"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/17-58-0fd13f03bb09c4a98acd19eed04b4208.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午5.58.32"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/18-04-b20927184230e2807d939cf1c269b0ad.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午6.03.58"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/18-07-04126271388e88d3249f92c03bb98ab8.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午6.07.47"></p>
+<p>  <img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/18-09-3fe2813a64a547ff9fcfcf18b4889bf1.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午6.09.14"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/18-12-520cc1e987db50ff433ce7c885b36210.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午6.12.14"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/18-16-a8b6838d0e0134c0a7b0015b259bded1.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午6.16.35"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/18-17-c7d0c56b949cdc88d233e400907a80ec.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午6.16.59"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/18-17-a95490f6c456d0a2ae4bc278ade095b5.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午6.17.20"></p>
+<p>父子会并行运行，有一个syscall叫wait可以了解子的运行情况</p>
+<p>停止父不会导致子停止，在后面会讲</p>
+<p>unix 大多数fork是直接完全copy</p>
+<p>linux 会做一些不一样的事情</p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/18-26-36126ad16f8362c79dc76189e3dd2964.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午6.26.38"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/18-26-5bd0d76e5082f771459da447fb06b1a5.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午6.26.48"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/18-28-8fefe57bbfe77fd328f091270740e2b5.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午6.28.25"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/18-29-5e30f723bcf27f046f5440f34e7d14e6.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午6.29.21"></p>
+<p><img src="https://gitee.com/geminigby/drawing-bed-1/raw/master/2021/10/20/18-29-b38b0b32b091b25a6595041f399a59f9.png" srcset="/img/loading.gif" lazyload alt="截屏2021-10-20 下午6.29.39"></p>
 
             </div>
             <hr>
@@ -400,9 +430,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/OS/">OS</a>
-                    
                       <a class="hover-with-bg" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                    
+                      <a class="hover-with-bg" href="/tags/OS/">OS</a>
                     
                   </div>
                 
